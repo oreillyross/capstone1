@@ -1,4 +1,11 @@
-export const Field = ({label, type, fieldValues, onChange}) => {
+type FieldProps = {
+  label: string;
+  type: string;
+  fieldValues: Record<string, string>;
+  onChange: (e: any) => void;
+};
+
+export const Field = ({ label, type, fieldValues, onChange }: FieldProps) => {
   return (
     <div key={label} className="flex flex-col">
       <label className="pl-1 my-2 text-slate-500" htmlFor={label}>
@@ -9,9 +16,8 @@ export const Field = ({label, type, fieldValues, onChange}) => {
         id={label}
         type={type}
         value={fieldValues[label]}
-        onChange={onChange
-        }
+        onChange={onChange}
       />
     </div>
-  )
-}
+  );
+};
