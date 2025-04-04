@@ -9,9 +9,10 @@ type Field = {
 type Fields = {
   fields: Field[];
   submitLabel: string;
+  onSubmit: () => void
 };
 
-export const AuthForm = ({ fields, submitLabel }: Fields) => {
+export const AuthForm = ({ fields, submitLabel, onSubmit }: Fields) => {
   const [fieldValues, setFieldValues] = useState(() => {
     const initialState: { [key: string]: string } = {};
     for (let field of fields) {
@@ -19,9 +20,11 @@ export const AuthForm = ({ fields, submitLabel }: Fields) => {
     }
     return initialState;
   });
-  console.log(fieldValues);
+  
   return (
-    <form className="bg-white p-4 border border-slate-300 rounded-lg m-4 ">
+    <form 
+      onSubmit={onSubmit}
+      className="bg-white p-4 border border-slate-300 rounded-lg m-4 ">
       {fields.map(({ label, type }) => (
         <Field
           key={label}
