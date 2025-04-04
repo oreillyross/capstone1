@@ -5,8 +5,11 @@ interface USER {
   password: string
 }
 
-const createUser = async ({username, password}: USER) => {
-  const response = await apiFetch("POST", "/users", {
+export const createUser = async ({username, password}: USER): Promise<void> => {
+  const requestBody: USER = {
     username, password
+  }
+  const response = await apiFetch("POST", "/users", {
+    requestBody
   })
 }

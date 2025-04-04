@@ -9,7 +9,7 @@ type Field = {
 type Fields = {
   fields: Field[];
   submitLabel: string;
-  onSubmit: () => void
+  onSubmit: (values: {}) => void
 };
 
 export const AuthForm = ({ fields, submitLabel, onSubmit }: Fields) => {

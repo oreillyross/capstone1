@@ -1,6 +1,8 @@
 const { VITE_API_BASE_URL, VITE_API_KEY } = import.meta.env;
 
-export const apiFetch = (method: string, path: string, body = null) => {
+
+
+export const apiFetch = (method: string, path: string, body: {} | null = null) => {
   const options: RequestInit = {
     method,
     credentials: "include",
