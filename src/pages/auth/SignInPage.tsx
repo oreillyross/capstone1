@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { AuthForm } from "./AuthForm";
 import {FormContainer} from "./FormContainer"
-import {apiFetch} from "../../services/apiFetch"
+import {apiFetch} from "services/apiFetch"
 
 const response = await apiFetch("GET", "/api-key/info")
 console.log(response.status)

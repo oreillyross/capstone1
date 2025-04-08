@@ -24,6 +24,7 @@
     "vite": "^3.0.4"
   },
   "dependencies": {
-    "react-router": "^7.3.0"
+    "react-router": "^7.3.0",
+    "vite-jsconfig-paths": "^2.0.1"
   }
 }
