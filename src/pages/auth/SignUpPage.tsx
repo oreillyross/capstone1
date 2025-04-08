@@ -14,7 +14,7 @@ export default function SignUpPage() {
       <div className="flex justify-center items-center">
         <AuthForm
           fields={[
-            { label: "User Name", type: "text" },
+            { label: "username", type: "text" },
             { label: "password", type: "password" },
             { label: "Confirm password", type: "password" },
           ]}
@@ -32,7 +32,7 @@ export default function SignUpPage() {
               setError("Passwords do not match");
               return;
             }
-            const response = await userService.createUser({username: values["User Name"], password: values.password})
+            const response = await userService.createUser(values)
             if (response.status === 201) {
               setError("")
               console.log("User created successfully")

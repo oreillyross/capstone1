@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Field } from "./Field";
-import type {UserValues} from "../../../types"
+import type {UserValues} from "types"
 
 type Field = {
   label: string;
@@ -16,7 +16,7 @@ type Fields = {
 export const AuthForm = ({ fields, submitLabel, onSubmit }: Fields) => {
   const [loading, setLoading] = useState(false)
   
-  const [fieldValues, setFieldValues] = useState(() => {
+  const [values, setValues] = useState(() => {
     const initialState: { [key: string]: string } = {};
     for (let field of fields) {
       initialState[field.label] = "";
@@ -29,7 +29,7 @@ export const AuthForm = ({ fields, submitLabel, onSubmit }: Fields) => {
       onSubmit={async (e) => {
         e.preventDefault();
         setLoading(true)
-        await onSubmit(fieldValues)
+        await onSubmit(values)
         setLoading(false)
       }}
       className="bg-white p-4 border border-slate-300 rounded-lg m-4 "
@@ -39,9 +39,9 @@ export const AuthForm = ({ fields, submitLabel, onSubmit }: Fields) => {
           key={label}
           label={label}
           type={type}
-          fieldValues={fieldValues}
+          fieldValues={values}
           onChange={(e) =>
-            setFieldValues({ ...fieldValues, [label]: e.target.value })
+            setValues({ ...values, [label]: e.target.value })
           }
         />
       ))}
