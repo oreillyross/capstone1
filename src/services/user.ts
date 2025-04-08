@@ -1,15 +1,9 @@
-import {apiFetch} from "./apiFetch"
+import { apiFetch } from "./apiFetch";
+import type { UserValues } from "../types";
 
-interface USER {
-  username: string,
-  password: string
-}
+export const createUser = async ({ username, password }: UserValues) => await apiFetch("POST", "/users", {
+    username,
+    password,
+  });
 
-export const createUser = async ({username, password}: USER): Promise<void> => {
-  const requestBody: USER = {
-    username, password
-  }
-  const response = await apiFetch("POST", "/users", {
-    requestBody
-  })
-}
+

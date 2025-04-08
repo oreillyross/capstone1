@@ -7,10 +7,11 @@ export const apiFetch = (method: string, path: string, body: {} | null = null) =
     method,
     credentials: "include",
     headers: {
-      Authorization: "Bearer" + VITE_API_KEY,
+      Authorization: "Bearer " + VITE_API_KEY,
       "Content-Type": "application/json",
     },
   };
+  
   if (body) {
     options.body = JSON.stringify(body);
   }
