@@ -7,11 +7,22 @@ export const createUser = async ({ username, password }: UserValues) => await ap
   });
 
 export const createSession = async ({username, password}: UserValues) => {
-    console.log(username, password)
     return await apiFetch("POST", "/users/session", {
         username,
         password
     })
 }
 
+const CAPSTONE_SESSION_TOKEN = "capstone_session"
+
+export const storeSession = (capstoneSessionToken: string | null) => {
+    localStorage.setItem(CAPSTONE_SESSION_TOKEN, capstoneSessionToken)
+}
+
+export const getSession = () => localStorage.getItem(CAPSTONE_SESSION_TOKEN)
+
+export const removeSession = () => localStorage.removeItem(CAPSTONE_SESSION_TOKEN)
+
+
+ 
 

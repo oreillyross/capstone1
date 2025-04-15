@@ -2,15 +2,36 @@ import "./App.css";
 import { Routes, Route } from "react-router";
 import SignInPage from "./pages/auth/SignInPage";
 import SignUpPage from "./pages/auth/SignUpPage";
+import { useState } from "react";
+import * as userService from "services/user";
+import { SessionContext } from "contexts/SessionContext";
+import { jwtDecode } from "jwt-decode";
+import { PlantListPage } from "pages/PlantListPage";
 
 export default function App() {
+  const [sessionToken, setSessionToken] = useState(userService.getSession());
+
+ console.log("what is ", sessionToken)
+  
   return (
-    <main>
+    <SessionContext.Provider
+      value={{
+        user: sessionToken ? jwtDecode(sessionToken) : null,
+        signIn: (token: string | null) => {
+          setSessionToken(token);
+          userService.storeSession(sessionToken);
+        },
+        signOut: () => {
+          setSessionToken(null);
+          userService.removeSession();
+        },
+      }}
+    >
       <Routes>
         <Route path="/" element={<SignInPage />} />
         <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/plants" element={<PlantListPage />} />
       </Routes>
-      
-    </main>
+    </SessionContext.Provider>
   );
 }

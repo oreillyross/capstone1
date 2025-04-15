@@ -19,7 +19,7 @@ export const FormContainer: React.FC<FormContainerProps> = ({ children }) => {
     <div className="flex flex-col items-center mx-2 my-8">
         <img className="w-24" src="https://static-task-assets.react-formula.com/capstone_logo_dark.png"/>
     <div className="font-playfair text-3xl text-emerald-700">
-    Riley's Plants
+    Plants
     </div>
     </div>
     {children}</div>
