@@ -19,7 +19,7 @@ export default function App() {
         user: sessionToken ? jwtDecode(sessionToken) : null,
         signIn: (token: string | null) => {
           setSessionToken(token);
-          userService.storeSession(sessionToken);
+          userService.storeSession(token);
         },
         signOut: () => {
           setSessionToken(null);
