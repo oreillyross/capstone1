@@ -1,5 +1,12 @@
+import { RedirectIfLoggedOut } from "components/RedirectIfLoggedOut";
+import { Navbar } from "components/Navbar";
+
 export const PlantListPage = () => {
-  return <div>
-      All my plants live here
-  </div>
-}
+    return (
+        <RedirectIfLoggedOut>
+            <div>
+                <Navbar />
+            </div>
+        </RedirectIfLoggedOut>
+    );
+};

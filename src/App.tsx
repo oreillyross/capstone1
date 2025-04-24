@@ -10,13 +10,11 @@ import { PlantListPage } from "pages/PlantListPage";
 
 export default function App() {
   const [sessionToken, setSessionToken] = useState(userService.getSession());
-
- console.log("what is ", sessionToken)
-  
+ 
   return (
     <SessionContext.Provider
       value={{
-        user: sessionToken ? jwtDecode(sessionToken) : null,
+        user: sessionToken && sessionToken != "null" ? jwtDecode(sessionToken) : null,
         signIn: (token: string | null) => {
           setSessionToken(token);
           userService.storeSession(token);

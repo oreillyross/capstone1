@@ -5,7 +5,7 @@ import { FormContainer } from "./FormContainer";
 import * as userService from "services/user";
 import { useContext, useState } from "react";
 import { SessionContext } from "contexts/SessionContext";
-import { LoggedIn } from "components/LoggedIn";
+import { RedirectIfLoggedIn } from "components/RedirectIfLoggedIn";
 
 // const response = await apiFetch("GET", "/api-key/info")
 // console.log(response.status)
@@ -14,10 +14,10 @@ export default function SignInPage() {
   const [error, setError] = useState("");
   const location = useLocation();
   const sessionContext = useContext(SessionContext);
-  const navigate = useNavigate();
+  
 
   return (
-    <LoggedIn>
+    <RedirectIfLoggedIn>
       <FormContainer>
         {error && (
           <div className="border border-red-400 min-w-24 bg-red-100 p-2 rounded">
@@ -46,7 +46,7 @@ export default function SignInPage() {
               if (response.status == 201) {
                 setError("");
                 sessionContext?.signIn(data.capstone_session_token);
-                navigate("/plants");
+                
               } else {
                 setError(data.error);
               }
@@ -57,6 +57,6 @@ export default function SignInPage() {
           Create account
         </Link>
       </FormContainer>
-    </LoggedIn>
+    </RedirectIfLoggedIn>
   );
 }
