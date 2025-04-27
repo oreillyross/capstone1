@@ -16,7 +16,7 @@ export const createSession = async ({username, password}: UserValues) => {
 const CAPSTONE_SESSION_TOKEN = "capstone_session"
 
 export const storeSession = (capstoneSessionToken: string | null) => {
-    localStorage.setItem(CAPSTONE_SESSION_TOKEN, capstoneSessionToken)
+    localStorage.setItem(CAPSTONE_SESSION_TOKEN, capstoneSessionToken ?? "")
 }
 
 export const getSession = () => localStorage.getItem(CAPSTONE_SESSION_TOKEN)
