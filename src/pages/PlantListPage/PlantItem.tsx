@@ -11,17 +11,20 @@ const POT_COLORS = {
   amber: "bg-amber-600"
 }
 
-function getRandomIdx(array: any) {
+function getRandomIdx(array: { src: string; pot_color: string }[]) {
+  if (array.length == 1) return 0 
   return Math.floor(Math.random() * array.length)
 }
 
 export const PlantItem: React.FC<{plant: Plant}> = ({plant}) => {
 
   const [imgIdx, setImgIdx] = useState(getRandomIdx(plant.images))
-  console.log(imgIdx, plant.images)  
+
+  console.log(plant)
+  
   return (
     <div className="mx-2 my-8">
-    <img className="w-[240px] h-[220px] rounded-md" src={plant.images[imgIdx].src}/>
+    {/* <img className="w-[240px] h-[220px] rounded-md" src={plant.images[imgIdx].src}/> */}
     <div className="flex justify-between my-3">
      <div className="text-xl text-emerald-700">
       {plant.name}
