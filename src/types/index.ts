@@ -15,3 +15,10 @@ export interface SessionContextValue {
   signIn: (token: string | null) => void;
   signOut: () => void;
 }
+
+export interface Plant {
+  id: number,
+  images: [{pot_color: string, src: string}],
+  name: string,
+  price: number
+}
