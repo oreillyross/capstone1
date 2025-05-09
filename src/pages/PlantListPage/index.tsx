@@ -17,7 +17,7 @@ export const PlantListPage = () => {
             setLoading(false);
         })();
     }, []);
-    console.log(plants)
+   
     
     return (
         <RedirectIfLoggedOut>
@@ -32,7 +32,7 @@ export const PlantListPage = () => {
                 ) : (
                     <div className="flex justify-center">
                         <div className="flex flex-wrap w-full max-w-4xl my-20">
-                            <div className="font-playfair text-emerald-700 text-3xl mb-4">
+                            <div className="font-playfair text-emerald-700 text-3xl mb-4 pl-4">
                                 Plants in stock
                             </div>
                             <div className="flex flex-wrap justify-center">

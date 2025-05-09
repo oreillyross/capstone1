@@ -1,3 +1,7 @@
+import {POT_COLORS} from "pages/PlantListPage/PlantItem"
+
+type PotColor = keyof typeof POT_COLORS
+
 type JwtPayload = {
   id: number,
   username: string,
@@ -18,7 +22,7 @@ export interface SessionContextValue {
 
 export interface Plant {
   id: number,
-  images: [{pot_color: string, src: string}],
+  images: [{pot_color: PotColor, src: string}],
   name: string,
   price: number
 }

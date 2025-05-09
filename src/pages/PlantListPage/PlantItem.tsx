@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react"
 import type { Plant } from "types"
 import clsx from "clsx"
 
-const POT_COLORS = {
+export const POT_COLORS = {
   stone: "bg-stone-200",
   slate: "bg-slate-300",
   sky: "bg-sky-700",
@@ -12,22 +12,10 @@ const POT_COLORS = {
   amber: "bg-amber-600"
 }
 
-function getRandomIdx(array: { src: string; pot_color: string }[]) {
-  return Math.floor(Math.random() * array.length)
-}
 
 export const PlantItem: React.FC<{plant: Plant}> = ({plant}) => {
   const [imgIdx, setImgIdx] = useState(0)
   
-  useEffect(() => {
-    if (plant?.images?.length) {
-      setImgIdx(getRandomIdx(plant.images))
-    }
-  }, [plant])
-
-  if (!plant?.images?.length) {
-    return null
-  }
   
   return (
     <div className="mx-2 my-8">
@@ -52,7 +40,7 @@ export const PlantItem: React.FC<{plant: Plant}> = ({plant}) => {
           {plant.images.map((col, idx) => 
             <div 
               key={idx} 
-              className={clsx("w-5 h-5 rounded-full mx-[3px]", POT_COLORS[col.pot_color])}
+              className={clsx("w-5 h-5 rounded-full mx-[3px]", POT_COLORS[col.pot_color], imgIdx === idx && "outline outline-slate-400 outline-offset-2")}
               onMouseEnter={() => setImgIdx(idx)}
             />
           )}
