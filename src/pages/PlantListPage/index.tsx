@@ -17,7 +17,8 @@ export const PlantListPage = () => {
             setLoading(false);
         })();
     }, []);
-
+    console.log(plants)
+    
     return (
         <RedirectIfLoggedOut>
             <div>
