@@ -1,5 +1,5 @@
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import type { Plant } from "types"
 import clsx from "clsx"
 
@@ -17,15 +17,25 @@ function getRandomIdx(array: { src: string; pot_color: string }[]) {
 }
 
 export const PlantItem: React.FC<{plant: Plant}> = ({plant}) => {
-  const [imgIdx, setImgIdx] = useState(() => plant?.images ? getRandomIdx(plant.images) : 0)
+  const [imgIdx, setImgIdx] = useState(0)
+  
+  useEffect(() => {
+    if (plant?.images?.length) {
+      setImgIdx(getRandomIdx(plant.images))
+    }
+  }, [plant])
 
   if (!plant?.images?.length) {
-    return null;
+    return null
   }
   
   return (
     <div className="mx-2 my-8">
-      <img className="w-[240px] h-[220px] rounded-md" src={plant.images[imgIdx].src}/>
+      <img 
+        className="w-[240px] h-[220px] rounded-md" 
+        src={plant.images[imgIdx].src}
+        alt={plant.name}
+      />
       <div className="flex justify-between my-3">
         <div className="text-xl text-emerald-700">
           {plant.name}
