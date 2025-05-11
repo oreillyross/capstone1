@@ -7,6 +7,7 @@ import * as userService from "services/user";
 import { SessionContext } from "contexts/SessionContext";
 import { jwtDecode } from "jwt-decode";
 import { PlantListPage } from "pages/PlantListPage";
+import { PlantShowPage } from "pages/PlantShowPage";
 
 export default function App() {
   const [sessionToken, setSessionToken] = useState(userService.getSession());
@@ -29,6 +30,7 @@ export default function App() {
         <Route path="/" element={<SignInPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/plants" element={<PlantListPage />} />
+        <Route path="/plant/:plantId" element={<PlantShowPage />} />
       </Routes>
     </SessionContext.Provider>
   );

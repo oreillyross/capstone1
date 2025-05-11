@@ -21,9 +21,9 @@ export const PlantListPage = () => {
     
     return (
         <RedirectIfLoggedOut>
-            <div>
+            
+                <div className="min-h-screen bg-emerald-50">
                 <Navbar />
-                <div className="min-h-screen bg-green-50">
                 
                 {isLoading ? (
                     <div className="flex justify-center mt-40">
@@ -44,7 +44,7 @@ export const PlantListPage = () => {
                     </div>
                 )}
                 </div>
-            </div>
+            
         </RedirectIfLoggedOut>
     );
 };

@@ -1,7 +1,8 @@
 
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import type { Plant } from "types"
 import clsx from "clsx"
+import { Link } from "react-router"
 
 export const POT_COLORS = {
   stone: "bg-stone-200",
@@ -18,7 +19,7 @@ export const PlantItem: React.FC<{plant: Plant}> = ({plant}) => {
   
   
   return (
-    <div className="mx-2 my-8">
+    <Link to={`/plant/${plant.id}`} className="mx-2 my-8">
       <img 
         className="w-[240px] h-[220px] rounded-md" 
         src={plant.images[imgIdx].src}
@@ -46,6 +47,6 @@ export const PlantItem: React.FC<{plant: Plant}> = ({plant}) => {
           )}
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
