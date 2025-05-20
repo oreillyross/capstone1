@@ -30,7 +30,7 @@ export default function App() {
         <Route path="/" element={<SignInPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/plants" element={<PlantListPage />} />
-        <Route path="/plant/:plantId" element={<PlantShowPage />} />
+        <Route path="/plants/:plantId" element={<PlantShowPage />} />
       </Routes>
     </SessionContext.Provider>
   );

@@ -3,6 +3,7 @@ import { Navbar } from "components/Navbar";
 import { useEffect, useState } from "react";
 import { getPlants } from "services/plant";
 import { PlantItem } from "./PlantItem";
+import { LoadingSpinner } from "components/LoadingSpinner";
 
 export const PlantListPage = () => {
     const [isLoading, setLoading] = useState(false);
@@ -26,9 +27,7 @@ export const PlantListPage = () => {
                 <Navbar />
                 
                 {isLoading ? (
-                    <div className="flex justify-center mt-40">
-                        <i className="fa-solid fa-circle-notch text-emerald-500 text-5xl animate-spin"></i>
-                    </div>
+                    <LoadingSpinner/>
                 ) : (
                     <div className="flex justify-center">
                         <div className="flex flex-wrap w-full max-w-4xl my-20">

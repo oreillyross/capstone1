@@ -24,5 +24,7 @@ export interface Plant {
   id: number,
   images: [{pot_color: PotColor, src: string}],
   name: string,
-  price: number
+  price: number,
+  description: string,
+  botanical_name: string,
 }

@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 
 import { SessionContext } from "contexts/SessionContext";
+import { Link } from "react-router";
 
 export const Navbar = () => {
   const session = useContext(SessionContext);
@@ -13,10 +14,12 @@ export const Navbar = () => {
     >
       <div className="max-w-3xl w-full flex justify-between items-center">
         <div className="flex flex-col items-center font-playfair text-2xl text-white">
+          <Link to="/plants">
           <img
             className="w-10"
             src="https://static-task-assets.react-formula.com/capstone_logo_light.png"
           />
+            </Link>
           Plants
         </div>
         <div className="p-2 relative">
