@@ -2,15 +2,8 @@ import React, { useState } from "react";
 import type { Plant } from "types";
 import clsx from "clsx";
 import { Link } from "react-router";
+import {POT_COLORS} from "utils"
 
-export const POT_COLORS = {
-  stone: "bg-stone-200",
-  slate: "bg-slate-300",
-  sky: "bg-sky-700",
-  black: "bg-gray-600",
-  white: "bg-gray-50",
-  amber: "bg-amber-600",
-};
 
 export const PlantItem: React.FC<{ plant: Plant }> = ({ plant }) => {
   const [imgIdx, setImgIdx] = useState(0);

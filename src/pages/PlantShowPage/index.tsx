@@ -4,7 +4,7 @@ import { getPlantById } from "services/plant";
 import { LoadingSpinner } from "components/LoadingSpinner";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { PlantInfoSection } from "pages/PlantListPage/PlantInfoSection";
+import { PlantInfoSection } from "./PlantInfoSection";
 
 export const PlantShowPage = () => {
   const { plantId } = useParams();
@@ -22,7 +22,7 @@ export const PlantShowPage = () => {
       }
       setIsLoading(false);
     })();
-  }, []);
+  }, [plantId]);
 
   return (
     <>

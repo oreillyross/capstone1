@@ -1,4 +1,4 @@
-import {POT_COLORS} from "pages/PlantListPage/PlantItem"
+import {POT_COLORS} from "utils"
 
 type PotColor = keyof typeof POT_COLORS
 
@@ -27,4 +27,10 @@ export interface Plant {
   price: number,
   description: string,
   botanical_name: string,
+}
+
+export interface BenefitBoxProps {
+  title: string,
+  description: string,
+  icon: string
 }
