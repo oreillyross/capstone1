@@ -20,6 +20,12 @@ export interface SessionContextValue {
   signOut: () => void;
 }
 
+export interface AddToCartParams {
+  id: number,
+  quantity: number,
+  pot_color: string
+}
+
 export interface Plant {
   id: number,
   images: [{pot_color: PotColor, src: string}],
