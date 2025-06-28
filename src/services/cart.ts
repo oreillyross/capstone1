@@ -8,3 +8,6 @@ export const addPlantToCart = ({ id, quantity, pot_color }: AddToCartParams) =>
     quantity,
     pot_color,
   });
+//TODO properly type this when you know the shape of the object
+export const removePlantFromCart = ({itemId}: any) => apiFetch("DELETE", `/cart/${itemId}`)
+

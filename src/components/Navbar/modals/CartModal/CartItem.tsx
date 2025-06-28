@@ -1,6 +1,8 @@
-export const CartItem = ({ cart }) => {
+import * as cartService from "services/cart"
+
+export const CartItem = ({ cart, fetchCart }) => {
   return (
-    <div className="flex mx-6 my-8">
+    <div className="flex">
       <img className="w-28 rounded-md" src={cart.image_src}/>
       <div className="flex justify-between flex-1">
       <div className="mx-4">
@@ -13,7 +15,15 @@ export const CartItem = ({ cart }) => {
         </div>
       </div>
       </div>
-        <div className="text-slate-500 ">${cart.quantity * cart.price_per_unit}</div>
+      <div className="flex flex-col justify-between items-end">
+      <div className="text-slate-500 ">${cart.quantity * cart.price_per_unit}</div>
+      <button 
+        onClick={async () => {
+          await cartService.removePlantFromCart({itemId: cart.id})
+          fetchCart();
+        }}
+        className="text-slate-400 text-sm hover:text-red-800"> <i className="fa-solid fa-trash mr-1 text-base"></i> Remove</button>
+      </div>  
     </div>
   );
 };
