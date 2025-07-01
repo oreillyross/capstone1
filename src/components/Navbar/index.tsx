@@ -4,6 +4,7 @@ import { SessionContext } from "contexts/SessionContext";
 import { Link } from "react-router";
 
 import {CartModal} from "./modals/CartModal"
+import { ModalWrapper } from "./modals/ModalWrapper";
 
 export const Navbar = () => {
   const session = useContext(SessionContext);
@@ -26,7 +27,7 @@ export const Navbar = () => {
           Plants
         </div>
             </Link>
-        <div className="flex justify-end flex-1">
+        <div className="hidden sm:flex justify-end flex-1">
          <div className="relative min-w-32">
           <button
             onClick={() => setShowSignout(true)}
@@ -36,7 +37,7 @@ export const Navbar = () => {
             {session.user?.username}
           </button>
           {showSignOut && (
-            <div className=" absolute right-0 w-40 mt-2 mr-2 shadow-lg ronded">
+            <div className=" absolute right-0 w-40 mt-2 mr-2 shadow-lg rounded">
               <button 
                 onClick={session.signOut}
                 className=" flex items-center gap-2 px-4 py-2 bottom-[-34px] w-full left-0 bg-emerald-100 rounded-md p-2">
@@ -53,9 +54,15 @@ export const Navbar = () => {
             Cart
           </button>
         </div>
+        <button className="flex sm:hidden">
+            <i className="fa-solid fa-bars text-4xl text-emerald-500"></i>
+        </button>
       </div>
     </nav>
-      {cartOpen && <CartModal setCartOpen={setCartOpen}/>}
+      
+      <ModalWrapper isOpen={cartOpen} onCloseClick={() => setCartOpen(false)}>
+        <CartModal setCartOpen={setCartOpen}/>
+      </ModalWrapper>
     </>
   );
 };
