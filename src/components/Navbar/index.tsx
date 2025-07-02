@@ -5,11 +5,13 @@ import { Link } from "react-router";
 
 import {CartModal} from "./modals/CartModal"
 import { ModalWrapper } from "./modals/ModalWrapper";
+import { MobileMenuModal } from "./modals/MobileMenuModal";
 
 export const Navbar = () => {
   const session = useContext(SessionContext);
   const [showSignOut, setShowSignout] = useState(false);
   const [cartOpen, setCartOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <>
@@ -54,7 +56,9 @@ export const Navbar = () => {
             Cart
           </button>
         </div>
-        <button className="flex sm:hidden">
+        <button className="flex sm:hidden"
+          onClick={() => setMobileMenuOpen(true)}
+          >
             <i className="fa-solid fa-bars text-4xl text-emerald-500"></i>
         </button>
       </div>
@@ -62,6 +66,14 @@ export const Navbar = () => {
       
       <ModalWrapper isOpen={cartOpen} onCloseClick={() => setCartOpen(false)}>
         <CartModal setCartOpen={setCartOpen}/>
+      </ModalWrapper>
+      <ModalWrapper isOpen={mobileMenuOpen} onCloseClick={() => setMobileMenuOpen(false)}>
+      <MobileMenuModal onCartOpenClick={
+        () => {
+          setCartOpen(true)
+          setMobileMenuOpen(false)
+        }
+      }/>
       </ModalWrapper>
     </>
   );

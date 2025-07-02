@@ -20,7 +20,7 @@ export const ModalWrapper = ({
       <RemoveScroll>
         <div
           ref={divBackgroundRef}
-          className="fixed top-0 left-0 w-full h-full bg-black/30 backdrop-blur-sm flex justify-end"
+          className="fixed top-0 left-0 w-full h-full bg-black/30 backdrop-blur-sm flex justify-end items-start"
           onClick={(e) => {
             if (e.target == divBackgroundRef.current) {
               onCloseClick(e);
