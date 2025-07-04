@@ -3,6 +3,8 @@ import {useState} from "react"
 import {PlantHeading} from "./PlantHeading"
 import {BenefitBox} from "./BenefitBox"
 import { PlantPurchaseOptions } from "./PlantPurchaseOptions";
+import Zoom from "react-medium-image-zoom"
+import 'react-medium-image-zoom/dist/styles.css'
 
 export const PlantInfoSection = ({plant}:{plant: Plant}) => {
   const [imageIdx, setImageIdx] = useState(0)
@@ -13,7 +15,9 @@ export const PlantInfoSection = ({plant}:{plant: Plant}) => {
         <div className="block mb-8 md:hidden">
         <PlantHeading plant={plant}/>
         </div>
+        <Zoom>
         <img src={plant.images[imageIdx].src} />
+        </Zoom>
       
       </div>
       <div className="flex flex-col flex-1 md:px-8">

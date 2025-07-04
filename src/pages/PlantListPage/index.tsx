@@ -1,3 +1,4 @@
+import {motion} from "framer-motion"
 import { RedirectIfLoggedOut } from "components/RedirectIfLoggedOut";
 import { Navbar } from "components/Navbar";
 import { useEffect, useState } from "react";
@@ -36,7 +37,14 @@ export const PlantListPage = () => {
                             </div>
                             <div className="flex flex-wrap justify-center">
                                 {plants.map((plant, idx) => (
-                                    <PlantItem key={idx} plant={plant} />
+                        <motion.div key={idx}
+                            initial={{opacity: 0, translateY: "20px"}}
+                            whileInView={{opacity: 1, translateY: 0}}
+                            viewport={{once: true}}
+                            transition={{delay: 0.3 + (idx % 3) * 0.2 , duration: 0.4}}
+                            >
+                        <PlantItem plant={plant} />
+                        </motion.div>            
                                 ))}
                             </div>
                         </div>

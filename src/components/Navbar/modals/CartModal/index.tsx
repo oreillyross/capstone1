@@ -1,5 +1,5 @@
-import { RemoveScroll } from "react-remove-scroll";
 import { useCallback, useContext, useEffect, useState } from "react";
+import {motion} from "framer-motion"
 import { SessionContext } from "contexts/SessionContext";
 import * as cartService from "services/cart";
 import { LoadingSpinner } from "components/LoadingSpinner";
@@ -32,7 +32,11 @@ export const CartModal = ({ setCartOpen }: ISetCartOpen) => {
   }
 
   return (
-    <div className="bg-white h-screen w-full max-w-md flex flex-col">
+    <motion.div 
+      initial={{translateX: "100%"}}
+      animate={{translateX: 0}}
+      transition={{duration: 0.5}}  
+      className="bg-white h-screen w-full max-w-md flex flex-col">
     
       <div className="bg-emerald-800 shadow-md py-7 text-3xl text-white text-center font-playfair ">
         {user?.username}'s cart
@@ -69,6 +73,6 @@ export const CartModal = ({ setCartOpen }: ISetCartOpen) => {
           </div>
         </>
       )}
-    </div>
+    </motion.div>
   );
 };
